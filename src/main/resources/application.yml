@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  application:
+    name: nevs
+  data:
+    mongodb:
+      uri: mongodb://192.168.78.128:27017/hospiatal
+
+minio:
+  url: http://192.168.78.128:9002  #对象存储服务的URL
+  accessKey: TMBSFQF7T54ELZAF6DE0 #登陆账户
+  secretKey: aK+XIcyr4UQ5kQWaWjQQi7islsdnwK9lfRgVmkcb #登陆密码
+
+
