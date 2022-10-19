@@ -1,4 +1,4 @@
-package com.example.nevs.module.file.controller;
+package com.example.nevs.serve.file.controller;
 
 import com.example.nevs.common.Fileinfo;
 import com.example.nevs.util.MinionUtil;

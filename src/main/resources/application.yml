@@ -7,9 +7,24 @@ spring:
       max-request-size: 200MB
   application:
     name: nevs
+
+#  datasource:
+#    hikari:
+#      username: root
+#      password: 123456
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      pool-name: DateHikariCP
+#      minimum-idle: 5
+#      idle-timeout: 600000
+#      maximum-pool-size: 10
+#      auto-commit: true
+#      connection-timeout: 30000
+#      connection-test-query: SELECT 1
+#
+#    url: jdbc:mysql://192.168.78.128:3306/nevs?serverTimezone=UTC&characterEncoding=UTF-8
   data:
     mongodb:
-      uri: mongodb://192.168.78.128:27017/hospiatal
+      uri: mongodb://192.168.78.128:27017/nevs
 
 minio:
   url: http://192.168.78.128:9002  #对象存储服务的URL
