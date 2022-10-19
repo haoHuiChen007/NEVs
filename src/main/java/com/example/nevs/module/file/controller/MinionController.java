@@ -1,4 +1,4 @@
-package com.example.nevs.module.file.service.controller;
+package com.example.nevs.module.file.controller;
 
 import com.example.nevs.common.Fileinfo;
 import com.example.nevs.util.MinionUtil;
@@ -8,6 +8,7 @@ import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
