@@ -14,5 +14,4 @@ public class PageResult <T>  {
     private Integer totalPages;
     private List<T> content;
 
-
 }

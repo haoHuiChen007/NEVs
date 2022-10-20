@@ -24,7 +24,9 @@ public enum E {
     //用户登入
     USERNAME_REPEAT(1001, "用户名重复"),
     LOGIN_USERNAME_ERROR(1002,"用户名错误"),
-    LOGIN_PASSWORD_ERROR(1003,"密码错误")
+    LOGIN_PASSWORD_ERROR(1003,"密码错误"),
+    //权限
+    PERMISSION_ERROR(1004,"无系统管理员权限"),
     ;
     private final Integer code;
     private final String message;

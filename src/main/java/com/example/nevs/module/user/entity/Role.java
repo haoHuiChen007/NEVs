@@ -2,13 +2,14 @@ package com.example.nevs.module.user.entity;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
 
 @Data
 @Accessors(chain = true)
+@Document("co_role")
 public class Role {
     private String id;
     private String roleName;
-    private List<Integer> permissions;
+//    private List<Integer> permissions;
 }
