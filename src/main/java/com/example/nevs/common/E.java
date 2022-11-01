@@ -27,6 +27,8 @@ public enum E {
     LOGIN_PASSWORD_ERROR(1003,"密码错误"),
     //权限
     PERMISSION_ERROR(1004,"无系统管理员权限"),
+    BIND_ERROR(500,"未知异常联系管理员"),
+    COMMENT_NOT_EMPTY(1005,"评论不能为空")
     ;
     private final Integer code;
     private final String message;

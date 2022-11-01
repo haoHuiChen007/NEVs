@@ -1,25 +1,25 @@
 package com.example.nevs.common;
 
-import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Accessors
-@Data
 public abstract class ValuesCollection {
 
     private static final Map<Integer, String> type;
     private static final Map<Integer, String> employeeStatus;
     private static final Map<Integer, String> isDelete;
     private static final Map<Integer,String> permission;
+    private static final Map<String,String> role;
 
     static {
         type = new HashMap<>();
         employeeStatus = new HashMap<>();
         isDelete = new HashMap<>();
         permission=new HashMap<>();
+        role=new HashMap<>();
 
         type.put(1, "部门");
         type.put(2, "角色");
@@ -31,6 +31,10 @@ public abstract class ValuesCollection {
 
         isDelete.put(0,"正常");
         isDelete.put(1,"删除");
+
+        role.put("6350ecf45f5a514f4891cf47","系统管理员");
+        role.put("6350ed04e358a1745d802579","管理员");
+        role.put(null,"普通用户");
 
         permission.put(10,"user:*:*");
         permission.put(11,"user:insert:*");
@@ -51,5 +55,7 @@ public abstract class ValuesCollection {
         permission.put(50,"info:*:*");
     }
 
-
+    public static Map<String, String> getRole() {
+        return role;
+    }
 }

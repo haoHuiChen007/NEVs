@@ -7,7 +7,6 @@ import io.minio.messages.Bucket;
 import io.minio.messages.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +33,10 @@ public class MinionUtil {
         minioClient.putObject(PutObjectArgs.builder().bucket(bucket).object(objectName)
                 .stream(stream, -1, 10485760).build());
     }
+
+    /**
+     * 上传多个文件
+     */
 
     /**
      * 列出所有的桶

@@ -10,10 +10,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class RoleServiceImpl implements IRoleService {
@@ -34,11 +31,18 @@ public class RoleServiceImpl implements IRoleService {
     }
 
     @Override
-    public R createRole(Role role) {
+    public R createRole(String roleName) {
+        Role role = new Role();
+        role.setRoleName(roleName);
         Role insert = mongoTemplate.insert(role);
         if (BeanUtil.isNotEmpty(insert)){
             return R.success();
         }
         return R.error(E.INSERT_ERROR);
+    }
+
+    @Override
+    public R deleteRole(String id) {
+        return null;
     }
 }

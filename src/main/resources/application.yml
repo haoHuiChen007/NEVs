@@ -1,6 +1,21 @@
 server:
-  port: 8080
+  port: 8088
 spring:
+  mvc:
+    servlet:
+      load-on-startup: 1
+  redis:
+    port: 6379
+    host: 192.168.78.128
+  mail:
+    host: smtp.qq.com
+    username: 2677742124@qq.com
+    password: nhptnaqmsohldjeb
+    defalut-encoding: UTF-8
+
+
+
+
   servlet:
     multipart:
       max-file-size: 200MB
@@ -8,20 +23,6 @@ spring:
   application:
     name: nevs
 
-#  datasource:
-#    hikari:
-#      username: root
-#      password: 123456
-#      driver-class-name: com.mysql.cj.jdbc.Driver
-#      pool-name: DateHikariCP
-#      minimum-idle: 5
-#      idle-timeout: 600000
-#      maximum-pool-size: 10
-#      auto-commit: true
-#      connection-timeout: 30000
-#      connection-test-query: SELECT 1
-#
-#    url: jdbc:mysql://192.168.78.128:3306/nevs?serverTimezone=UTC&characterEncoding=UTF-8
   data:
     mongodb:
       uri: mongodb://192.168.78.128:27017/nevs
@@ -30,5 +31,12 @@ minio:
   url: http://192.168.78.128:9002  #对象存储服务的URL
   accessKey: TMBSFQF7T54ELZAF6DE0 #登陆账户
   secretKey: aK+XIcyr4UQ5kQWaWjQQi7islsdnwK9lfRgVmkcb #登陆密码
+
+
+
+version: 1.0.0
+
+ip: 192.168.135.198
+
 
 

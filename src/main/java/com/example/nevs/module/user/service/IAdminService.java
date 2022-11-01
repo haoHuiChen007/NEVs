@@ -2,9 +2,9 @@ package com.example.nevs.module.user.service;
 
 import com.example.nevs.common.PageRequest;
 import com.example.nevs.common.R;
-import com.example.nevs.module.user.entity.Admin;
-
-import java.util.List;
+import com.example.nevs.module.car.entity.Car;
+import com.example.nevs.module.user.entity.User;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public interface IAdminService {
@@ -14,11 +14,27 @@ public interface IAdminService {
 
     R updateSelf(Map<String, String> update);
 
-    Admin getAdminById(String id);
+    User getAdminById(String id);
 
-    R deleteAdmin(String selfId, List<String> ids);
+    R deleteAdmin(String selfId, String id);
 
-    R getUserList(PageRequest pageRequest, String roleId);
+    R getUserList(PageRequest pageRequest, String roleId,String username);
 
-    Admin getAdminByUserId(String id);
+    User getAdminByUserId(String id);
+
+    R insertCar(Car car);
+
+    Map<String,String> jwtPayload(HttpServletRequest request);
+
+    R getCarById(String id);
+
+    R getCarList(Map<String,String>map);
+
+    R updateCarById(Car car);
+
+    R deleteCarById(String id);
+
+    User getUserByUsername(String username);
+
+    R getNum();
 }

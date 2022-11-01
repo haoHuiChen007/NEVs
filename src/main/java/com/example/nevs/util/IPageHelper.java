@@ -55,7 +55,7 @@ public class IPageHelper {
             int skip = size * page;
             query.skip(skip).limit(size);
         }//CollUtil.newArrayList(new Sort.Order(Sort.Direction.DESC,"date")).toArray()
-        List<T> entityList = mongoTemplate.find(query.with(Sort.by(CollUtil.newArrayList(new Sort.Order(Sort.Direction.DESC, "date")))), entityClass);
+        List<T> entityList = mongoTemplate.find(query.with(Sort.by(CollUtil.newArrayList(new Sort.Order(Sort.Direction.DESC, "createTime")))), entityClass);
         PageResult<R> pageResult = new PageResult<>();
         pageResult.setPage(page)
                 .setSize(size)
@@ -64,17 +64,19 @@ public class IPageHelper {
                 .setContent(entityList.stream().map(mapper).collect(Collectors.toList()));
         return pageResult;
     }
+
     public Map<String,Object> getNotNullProperties(Object source){
         BeanWrapper src=new BeanWrapperImpl(source);
         PropertyDescriptor[] pds = src.getPropertyDescriptors();
         Map<String,Object> notEmpty=new HashMap<>();
         for (PropertyDescriptor pd : pds) {
             Object srcValue=src.getPropertyValue(pd.getName());
-            if (srcValue!=null && !Objects.equals(pd.getName(),"class")&& !pd.getName().equals("id"))
+            if (srcValue!=null && !Objects.equals(pd.getName(),"class")&& !pd.getName().equals("id")&& !pd.getName().equals("password") && !pd.getName().equals("empty"))
                 notEmpty.put(pd.getName(), srcValue);
         }
         return notEmpty;
     }
+
     public Update getUpdateSet(Object source){
         Map<String,Object> notNullProperties=getNotNullProperties(source);
         Update update=new Update();

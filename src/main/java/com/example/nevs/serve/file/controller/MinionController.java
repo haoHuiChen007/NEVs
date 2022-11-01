@@ -13,6 +13,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 @Api(tags = "文件操作接口")
@@ -23,9 +24,8 @@ public class MinionController {
     MinionUtil minioUtil;
 
     @ApiOperation("上传一个文件")
-    @PostMapping(value = "/uploadFile")
-    public boolean fileUpload(@RequestParam MultipartFile uploadFile, @RequestParam String bucket,
-                              @RequestParam(required = false) String objectName) throws Exception {
+    @PostMapping(value = "/uploadFile/{bucket}/{objectName}")
+    public boolean fileUpload(@RequestParam("file") MultipartFile uploadFile, @PathVariable String bucket, @PathVariable String objectName) throws Exception {
         minioUtil.createBucket(bucket);
         if (objectName != null) {
             minioUtil.uploadFile(uploadFile.getInputStream(), bucket, objectName + "/" + uploadFile.getOriginalFilename());
@@ -101,6 +101,23 @@ public class MinionController {
     public List<Fileinfo> listAllFile() throws Exception {
 
         return minioUtil.listAllFile();
+    }
+
+    @PostMapping("/uploadFiles/{bucket}/{objectName}")
+    public List<String> filesUpload(@RequestParam("file") MultipartFile[] uploadFiles, @PathVariable String bucket, @PathVariable String objectName) throws Exception {
+        minioUtil.createBucket(bucket);
+        List<String> fileUrls =  new ArrayList<>();
+        for (MultipartFile uploadFile : uploadFiles) {
+            String fileName = uploadFile.getOriginalFilename();
+            if (objectName != null) {
+                minioUtil.uploadFile(uploadFile.getInputStream(), bucket, objectName + "/" + fileName);
+                fileUrls.add("http://192.168.135.198/"+bucket+"/"+objectName+"/"+fileName);
+            } else {
+                minioUtil.uploadFile(uploadFile.getInputStream(), bucket, fileName);
+                fileUrls.add("http://192.168.135.198/"+bucket+"/"+fileName);
+            }
+        }
+        return fileUrls;
     }
 }
 

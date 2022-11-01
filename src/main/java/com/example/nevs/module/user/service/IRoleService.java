@@ -8,5 +8,7 @@ public interface IRoleService {
 
     Role getRoleNameById(String id);
 
-    R createRole(Role role);
+    R createRole(String roleName);
+
+    R deleteRole(String id);
 }

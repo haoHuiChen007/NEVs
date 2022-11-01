@@ -11,5 +11,4 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Role {
     private String id;
     private String roleName;
-//    private List<Integer> permissions;
 }
